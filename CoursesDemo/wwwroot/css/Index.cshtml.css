@@ -1,0 +1,73 @@
+﻿.text-fiter {
+    color: #40525B;
+    font-size: 18px;
+}
+
+.fixed-w {
+    width: 130px;
+    max-width: 130px;
+}
+
+.dropdown-toggle {
+    color: #63BACF;
+    font-size: 16px;
+}
+
+    .dropdown-toggle:hover {
+        color: #40525B;
+        font-size: 16px;
+    }
+
+.text-drop-label {
+    color: #CACCCE;
+    font-size: 16px;
+}
+
+.text-drop-select {
+    color: #001524;
+    font-size: 16px;
+}
+
+.custom-card {
+    border-bottom: 2px solid #CACCCE !important;
+}
+
+.course-img {
+    max-height: 170px;
+}
+
+.text-time {
+    bottom: 10px;
+    right: 15px;
+    background-color: rgba(0, 21, 36,0.8);
+}
+
+.text-course-name {
+    color: #001524;
+}
+
+.text-course-details {
+    color: #001524;
+    font-size: 13px;
+}
+
+.text-price {
+    color: #001524;
+    font-size: 13px;
+}
+
+.btn-new {
+    background-color: #63BACF;
+    color: #FFFFFF;
+}
+
+    .btn-new:hover {
+        background-color: forestgreen;
+        color: #FFFFFF;
+    }
+
+
+.custom-list-items {
+    background-color: #63BACF;
+    
+}

@@ -1,0 +1,28 @@
+﻿.custom-navbar {
+    color: var(--ws-navber-font-color);
+    margin: 0;
+}
+
+.navbar-brand-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.form-control-search {
+    border: none;
+    background-color: white;
+    outline: none;
+    color: #A2A2A2;
+    font-size: 14px;
+    background-size: contain;
+}
+
+.btn-search {
+    background-color: #63BACF;
+}
+
+.img {
+    width: 20px;
+    height: 20px;
+}
