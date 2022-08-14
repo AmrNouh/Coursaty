@@ -18,6 +18,8 @@ namespace CoursesDemo.Models
         public string Name { get; set; }
         public IFormFile Image { get; set; }
 
+        public string ImageDataURL { get; set; }
+
         [Display(Name = "Course PromoLink")]
         [Column(TypeName = "nvarchar(250)")]
         public string PromoLink { get; set; }

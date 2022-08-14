@@ -44,6 +44,7 @@
 }
 
 <div class="modal-content">
+    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
     <form asp-action="AddCourse" asp-controller="Course" method="post" enctype="multipart/form-data">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Add Couse/Track</h5>
@@ -69,9 +70,17 @@
                                         <span asp-validation-for="PromoLink" class="text-danger"></span>
                                     </div>
                                 </div>
-                                @*string imageDataURL = string.Format("data:image/png;base64,{0}", System.Convert.ToBase64String(dataitem.UserImage));*@
+                                @{
+
+                                    string imageDataURL = string.Format("data:image/png;base64,{0}", Model.ImageDataURL);
+                                    if (imageDataURL == "data:image/png;base64,")
+                                    {
+                                        imageDataURL = "~/images/img-placeholder.jpg";
+                                    }
+
+                                }
                                 <div class="d-flex flex-column align-items-center flex-fill pt-2">
-                                    <img class="img-thumbnail img-fluid rounded w-50" src="~/images/img-placeholder.jpg" alt="image place holder" asp-append-version="true" id="courseImg" style="max-height:80px;" />
+                                    <img class="img-thumbnail img-fluid rounded w-50" src="@imageDataURL" alt="image place holder" asp-append-version="true" id="courseImg" style="max-height:80px;" />
                                     <input id="imgInp" asp-for="Image" type="file" class="d-none" accept="image/*" />
                                     <span asp-validation-for="Image"></span>
                                     <input type="button" class="mt-3 btn-sm btn-new border-0" onclick="$('#imgInp').click()" value="Course Photo" />
@@ -195,7 +204,7 @@
                                                 <select id="gainSkills" class="custom-select flex-fill mr-2" asp-items="Skills">
                                                     <option value="0">[]</option>
                                                 </select>
-                                                <button id="btnGainSkill" type="button" class="btn btn-new text-white">+</button>
+                                                <button id="btnGainSkill" data-unique="gn" type="button" class="btn btn-new text-white">+</button>
                                             </div>
                                         </div>
                                     </div>
@@ -215,7 +224,7 @@
                                                 <select id="requirdSkills" class="custom-select flex-fill mr-2" asp-items="Skills">
                                                     <option value="0">[]</option>
                                                 </select>
-                                                <button id="btnRequirdSkill" type="button" class="btn btn-new text-white">+</button>
+                                                <button id="btnRequirdSkill" data-unique="rq" type="button" class="btn btn-new text-white">+</button>
                                             </div>
                                         </div>
                                     </div>
@@ -235,7 +244,7 @@
                                                 <select id="courseModules" class="custom-select flex-fill mr-2" asp-items="Modules">
                                                     <option value="0">[]</option>
                                                 </select>
-                                                <button id="btnModule" type="button" class="btn btn-new text-white">+</button>
+                                                <button id="btnModule" data-unique="mod" type="button" class="btn btn-new text-white">+</button>
                                             </div>
                                         </div>
                                     </div>
@@ -364,7 +373,7 @@
                 <a class="btn btn-new my-2" id="next" href="#slidingLayout" role="button" data-slide="next" style="width:100px;">
                     <span>Next</span>
                 </a>
-                <button type="submit" class="btn btn-new my-2" style="width:100px;"><i class="loader"></i>Save</button>
+                <button type="submit" class="btn btn-new my-2" style="width:100px;" data-save="modal"><i class="loader"></i>Save</button>
                 <button type="button" class="btn btn-new my-2" data-dismiss="modal" style="width:100px;">Close</button>
             </div>
         </div>

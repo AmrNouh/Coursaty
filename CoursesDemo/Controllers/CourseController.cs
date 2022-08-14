@@ -3,7 +3,9 @@ using CourseDemo.Core.Repositories;
 using CoursesDemo.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace CoursesDemo.Controllers
 {
@@ -48,7 +50,17 @@ namespace CoursesDemo.Controllers
         public IActionResult AddCourse(AddCourseViewModel newCourse)
         {
             if (!ModelState.IsValid)
+            {
+                newCourse.Categories = (List<Category>)unitOfWork.Categories.GetAll();
+                newCourse.Types = (List<CourseType>)unitOfWork.Types.GetAll();
+                newCourse.Levels = (List<Level>)unitOfWork.Levels.GetAll();
+                newCourse.Currencies = (List<Currency>)unitOfWork.Currencies.GetAll();
+                newCourse.Languages = (List<Language>)unitOfWork.Languages.GetAll();
+                newCourse.Statuses = (List<Status>)unitOfWork.Statuses.GetAll();
+                newCourse.Skills = (List<Skill>)unitOfWork.Skills.GetAll();
+                newCourse.Modules = (List<Module>)unitOfWork.Modules.GetAll();
                 return PartialView("_AddCourse", newCourse);
+            }
 
             return RedirectToAction("index");
         }
